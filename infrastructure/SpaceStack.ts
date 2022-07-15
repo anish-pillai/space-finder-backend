@@ -19,6 +19,12 @@ export class SpaceStack extends Stack{
     constructor(scope: Construct, id:string,  props: StackProps){
         super(scope,id,props);
 
+        const helloLambdaWebpack = new LambdaFunction(this,'helloLambdaWebpack',{
+            runtime: Runtime.NODEJS_16_X,
+            code: Code.fromAsset(join(__dirname,'..','build', 'nodeHelloLambda')),
+            handler: 'nodeHelloLambda.handler',
+        });
+
         const helloLambda = new LambdaFunction(this,'helloLambda',{
             runtime: Runtime.NODEJS_16_X,
             code: Code.fromAsset(join(__dirname,'..','services', 'hello')),

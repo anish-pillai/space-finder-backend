@@ -8,6 +8,10 @@ npm i -D aws-cdk aws-cdk-lib constructs ts-node typescript
 
 npm i -D @types/node
 
+npm i -D webpack webpack-cli ts-loader @types/webpack
+
+To build:
+npm run build
 
 # CDK Commands
 
