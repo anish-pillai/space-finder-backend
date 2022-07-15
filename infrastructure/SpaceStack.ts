@@ -1,6 +1,7 @@
 import { Stack, StackProps } from 'aws-cdk-lib';
 import { LambdaIntegration, RestApi } from 'aws-cdk-lib/aws-apigateway';
 import { Code, Function as LambdaFunction, Runtime } from 'aws-cdk-lib/aws-lambda';
+import { NodejsFunction } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { Construct } from 'constructs';
 import { join } from 'path';
 
@@ -19,10 +20,15 @@ export class SpaceStack extends Stack{
         super(scope,id,props);
 
         const helloLambda = new LambdaFunction(this,'helloLambda',{
-            runtime: Runtime.NODEJS_14_X,
+            runtime: Runtime.NODEJS_16_X,
             code: Code.fromAsset(join(__dirname,'..','services', 'hello')),
             handler: 'hello.main',
         });
+
+        const helloLambdaNodeJS = new NodejsFunction(this,'helloLambdaNodeJS',{
+            entry: join(__dirname,'..','services', 'node-lambda', 'hello.ts'),
+            handler: 'handler'
+        })
 
         //Hello API Lambda Integration
         const helloLambdaIntegration = new LambdaIntegration(helloLambda);
