@@ -10,6 +10,8 @@ npm i -D @types/node
 
 npm i aws-sdk
 
+npm i -D @types/aws-lambda
+
 # CDK Commands
 
 cdk init app --language typescript

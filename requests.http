@@ -1,3 +1,35 @@
 @endpoint = https://skt8lrtco1.execute-api.us-east-1.amazonaws.com/prod
 GET {{endpoint}}/hello/
 ###
+
+GET {{endpoint}}/spaces
+###
+
+GET {{endpoint}}/spaces?spaceId=76df12e1-e578-4ebd-af0b-3352bd53d86d
+###
+
+GET {{endpoint}}/spaces?location=London
+###
+
+POST {{endpoint}}/spaces/
+Content-Type: application/json
+
+{
+    "location": "Londonzzz",
+    "name": "Best Locationzzz"
+}
+###
+
+PUT {{endpoint}}/spaces?spaceId=76df12e1-e578-4ebd-af0b-3352bd53d86d
+Content-Type: application/json
+
+{
+    "location": "Updated London"
+}
+###
+
+DELETE {{endpoint}}/spaces?spaceId=76df12e1-e578-4ebd-af0b-3352bd53d86d
+###
+
+
+
